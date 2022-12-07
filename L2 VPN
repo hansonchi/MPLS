@@ -27,6 +27,8 @@ mpls ip
 int eth 0/1
 mpls ip
 
+show mpls forwaring
+
 r3
 mpls ldp router-id loopback 0
 interface eth 0/0
