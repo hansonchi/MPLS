@@ -36,6 +36,8 @@ mpls ip
 
 A.MPLS AToM connect R4-R5
 
+CE router config
+
 r4
 int eth 0/0
 ip add 10.45.45.4 255.255.255.0
@@ -54,3 +56,17 @@ ip add 10.5.5.5 255.255.255.0
 router eigrp 45
 network 10.0.0.0
 
+PE router config
+
+r1
+
+interface eth 0/1
+xconnect 3.3.3.3 100 encapsulation mpls
+no sh
+
+if get error message of interface,please default int eth 0/1 first
+r3
+
+interface eth 0/1
+xconnect 1.1.1.1 100 encapsulation mpls
+no sh
