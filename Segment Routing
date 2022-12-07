@@ -1,0 +1,105 @@
+Segment routing
+
+Xr1-XR8
+Segment-routing mpls
+Global-block 16000-23999
+
+Xr1
+Router ospf 1
+Segment-routing mpls
+Interface loo 0
+Prefix-sid index 1
+
+Xr2
+Router ospf 1
+Segment-routing mpls
+Interface loo 0
+Prefix-sid index 2
+
+XR5
+Router isis 1
+Is-type level-2-only
+Net 49.0000.5555.5555.5555.00
+Address-family ipv4 unicast
+Metric-style wide
+Segment-routing mpls
+Interface loo 0
+Address-family ipv4 unicast
+Prefix-sid index 5
+Int eth 0/0/0/0
+Address-family ipv4 unicast
+Int eth 0/0/0/1
+Address-family ipv4 unicast
+
+XR4 as100 XR8 as200
+Bop route leaking
+
+XR4
+Route-policy LOOP($SID)
+Set label-index $SID
+Pass
+Exit
+Commit
+
+Router bop 100
+Address-family ipv4 unicast
+Network 10.1.1.1/32 route-policy LOOP(1)
+Network 10.2.2.2/32 route-policy LOOP(2)
+Network 10.3.3.3/32 route-policy LOOP(3)
+Network 10.4.4.4/32 route-policy LOOP(4)
+Allocate-boatel all
+Neighbor 192.148.8
+Remote-as 200
+Address-family ipv4 labeled-unicast
+Route-policy PASSALL in
+Route-policy PASSALL out
+
+XR8
+Router bop 200
+Address-family ipv4 unicast
+Network 10.5.5.5/32 route-policy LOOP(5)
+Network 10.6.6.6/32 route-policy LOOP(6)
+Network 10.7.7.7/32 route-policy LOOP(7)
+Network 10.8.8.8/32 route-policy LOOP(8)
+Allocate-boatel all
+Neighbor 192.148.4
+Remote-as 100
+Address-family ipv4 labeled-unicast
+Route-policy PASSALL in
+Route-policy PASSALL out
+
+Do sh mols forwarding
+
+————————————
+Reference
+
+Show bop ipv4 labeled-unicast neighbor
+Show bop vpnv4 unicast
+Route-policy B2O
+	if destination in (10.5.5.5/32, 10.6.6.6/32, 10.7.7.7/32) then
+		pass
+	endif
+End-policy
+
+Route-policy O2B
+	if destination in (10.1.1.1/32, 10.2.2.2/32, 10.3.3.3/32) then
+		pass
+	endif
+End-policy
+
+Route-policy PASSALL
+	pass
+End-policy
+
+XR4
+Router ospf 1
+router-id 0.0.0.4
+Segment-routing mols
+Redistribute bop 100 route-policy B2O
+Area 0
+Inter face loo 0
+Prefix-sid index 4
+Interface …..
+
+XR8
+
