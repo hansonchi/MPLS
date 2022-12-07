@@ -17,3 +17,19 @@ outer ospf 1
 router-id 0.0.0.3
 network 3.0.0.0 0.255.255.255 area 0
 network 192.1.23.0 0.0.0.255 area 0
+
+2.MPLS unicast routing
+
+r1
+mpls ldp router-id loopback 0
+interface eth 0/0
+mpls ip
+int eth 0/1
+mpls ip
+
+r3
+mpls ldp router-id loopback 0
+interface eth 0/0
+mpls ip
+
+
