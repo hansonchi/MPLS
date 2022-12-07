@@ -65,6 +65,8 @@ xconnect 3.3.3.3 100 encapsulation mpls
 no sh
 
 if get error message of interface,please default int eth 0/1 first
+check : show xconnect all
+
 r3
 
 interface eth 0/1
