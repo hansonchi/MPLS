@@ -34,4 +34,23 @@ mpls ldp router-id loopback 0
 interface eth 0/0
 mpls ip
 
+A.MPLS AToM connect R4-R5
+
+r4
+int eth 0/0
+ip add 10.45.45.4 255.255.255.0
+no sh
+int loo 0
+ip add 10.4.4.4 255.255.255.0
+router eigrp 45
+network 10.0.0.0
+
+r5
+int eth 0/0
+ip add 10.45.45.5 255.255.255.0
+no sh
+int loo 0
+ip add 10.5.5.5 255.255.255.0
+router eigrp 45
+network 10.0.0.0
 
