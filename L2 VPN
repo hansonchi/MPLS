@@ -72,3 +72,23 @@ r3
 interface eth 0/1
 xconnect 1.1.1.1 100 encapsulation mpls
 no sh
+
+---------------------------------------
+
+diff interface 
+r2
+pseudowire-class ABC
+  encapsulation mpls
+  interworking ip
+int eth 0/2
+xconnect 3.3.3.3 111 pw-class ABC
+no shut
+
+r3
+pseudowire-class ABC
+  encapsulation mpls
+  interworking ip
+int ser 1/0
+xconnect 1.1.1.1 111 pw-class ABC
+no shut
+
