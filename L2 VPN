@@ -92,3 +92,13 @@ int ser 1/0
 xconnect 1.1.1.1 111 pw-class ABC
 no shut
 
+-----------------
+L2TPv3
+PE config
+R1
+pseudowire-class III
+  encapsulation l2tpv3
+  ip local interface loopback 0
+int eth 0/1
+xconnect 3.3.3.3 200 pw-class III
+no shut
