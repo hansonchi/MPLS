@@ -92,3 +92,15 @@ int loo 0
 ip add 10.5.5.5 255.255.255.0
 router eigrp 100
 network 10.0.0.0
+
+r6
+int eth 0/0
+no sh
+int eth 0/0.10
+encap dot1q 10
+ip add 10.10.10.6 255.255.255.0
+no sh
+int loo 0
+ip add 10.6.6.6 255.255.255.0
+router eigrp 100
+network 10.0.0.0
