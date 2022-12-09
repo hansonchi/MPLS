@@ -104,3 +104,15 @@ int loo 0
 ip add 10.6.6.6 255.255.255.0
 router eigrp 100
 network 10.0.0.0
+
+--------------------------------
+VPLS config
+--------------------------------
+
+R1
+int gi 3
+no sh
+service instance 1 ethernet
+  encapsulation dot1q 10
+  bride-domain 100
+
