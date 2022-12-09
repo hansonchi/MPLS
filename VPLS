@@ -138,9 +138,9 @@ int gi 3
 no sh
 service instance 1 ethernet
   encapsulation dot1q 10
-  bride-domain 100
+  bride-domain 111 #it means bridge-domain is local effect on interface, no effect to L2 VFI
 l2 vfi CUSTA manual
   vpn id 123
-  bridge-domain 100
+  bridge-domain 111
   neighbor 1.1.1.1 encapsulation mpls
   neighbor 2.2.2.2 encapsulation mpls
