@@ -1,5 +1,7 @@
 basic config
 
+PE config
+---------------------------------
 CSR1
 int gi 1
 ip add 192.1.12.1 255.255.255.0
@@ -59,3 +61,11 @@ int gi
 mpls ip
 int g2
 mpls ip
+
+check
+show ip ospf neighbor
+show mpls ldp neighbor
+
+CE config
+---------------------------------
+
