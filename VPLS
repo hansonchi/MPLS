@@ -1,0 +1,8 @@
+basic config
+CSR1
+int gi 1
+ip add 192.1.12.1 255.255.255.0
+no sh
+int gi 2
+ip add 192.1.13.1 255.255.255.0
+no sh
