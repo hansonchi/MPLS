@@ -1,4 +1,5 @@
 basic config
+
 CSR1
 int gi 1
 ip add 192.1.12.1 255.255.255.0
@@ -13,6 +14,26 @@ router-id 0.0.0.1
 network 192.1.12.0 0.0.0.255 area 0
 network 192.1.13.0 0.0.0.255 area 0
 network 1.0.0.0 0.255.255.255 area 0
+mpls ldp router-id loo 0
+int gi 
+mpls ip
+int g2
+mpls ip
+
+CSR2
+int gi 1
+ip add 192.1.12.2 255.255.255.0
+no sh
+int gi 2
+ip add 192.1.23.2 255.255.255.0
+no sh
+int loo 0
+ip add 2.2.2.2 255.255.255.255
+router ospf 1
+router-id 0.0.0.2
+network 192.1.12.0 0.0.0.255 area 0
+network 192.1.23.0 0.0.0.255 area 0
+network 2.0.0.0 0.255.255.255 area 0
 mpls ldp router-id loo 0
 int gi 
 mpls ip
