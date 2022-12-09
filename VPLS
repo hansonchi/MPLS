@@ -13,3 +13,8 @@ router-id 0.0.0.1
 network 192.1.12.0 0.0.0.255 area 0
 network 192.1.13.0 0.0.0.255 area 0
 network 1.0.0.0 0.255.255.255 area 0
+mpls ldp router-id loo 0
+int gi 
+mpls ip
+int g2
+mpls ip
