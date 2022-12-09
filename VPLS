@@ -39,3 +39,23 @@ int gi
 mpls ip
 int g2
 mpls ip
+
+CSR3
+int gi 1
+ip add 192.1.23.3 255.255.255.0
+no sh
+int gi 2
+ip add 192.1.13.3 255.255.255.0
+no sh
+int loo 0
+ip add 3.3.3.3 255.255.255.255
+router ospf 1
+router-id 0.0.0.3
+network 192.1.13.0 0.0.0.255 area 0
+network 192.1.23.0 0.0.0.255 area 0
+network 3.0.0.0 0.255.255.255 area 0
+mpls ldp router-id loo 0
+int gi 
+mpls ip
+int g2
+mpls ip
