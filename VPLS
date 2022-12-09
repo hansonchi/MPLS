@@ -120,3 +120,27 @@ l2 vfi CUSTA manual
   bridge-domain 100
   neighbor 2.2.2.2 encapsulation mpls
   neighbor 3.3.3.3 encapsulation mpls
+
+R2
+int gi 3
+no sh
+service instance 1 ethernet
+  encapsulation dot1q 10
+  bride-domain 100
+l2 vfi CUSTA manual
+  vpn id 123
+  bridge-domain 100
+  neighbor 1.1.1.1 encapsulation mpls
+  neighbor 3.3.3.3 encapsulation mpls
+  
+R3
+int gi 3
+no sh
+service instance 1 ethernet
+  encapsulation dot1q 10
+  bride-domain 100
+l2 vfi CUSTA manual
+  vpn id 123
+  bridge-domain 100
+  neighbor 1.1.1.1 encapsulation mpls
+  neighbor 2.2.2.2 encapsulation mpls
