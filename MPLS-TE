@@ -1,0 +1,27 @@
+basic config
+
+1.config an IGP, TE requires either ospf of IS-iS as the routing protocol
+
+r1
+router ospf 1
+router-id 0.0.0.1
+network 192.1.12.0 0.0.0.255 area 0
+network 192.1.13.0 0.0.0.255 area 0
+network 192.1.14.0 0.0.0.255 area 0
+network 1.0.0.0 0.255.255.255 area 0
+
+r2
+router ospf 1
+router-id 0.0.0.2
+network 192.1.12.0 0.0.0.255 area 0
+network 192.1.23.0 0.0.0.255 area 0
+network 192.1.24.0 0.0.0.255 area 0
+network 2.0.0.0 0.255.255.255 area 0
+
+r3
+router ospf 1
+router-id 0.0.0.3
+network 192.1.12.0 0.0.0.255 area 0
+network 192.1.23.0 0.0.0.255 area 0
+network 192.1.14.0 0.0.0.255 area 0
+network 1.0.0.0 0.255.255.255 area 0
