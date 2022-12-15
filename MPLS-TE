@@ -87,3 +87,57 @@ interface eth 0/1
 mpls traffic-eng tunnels
 interface eth 0/2
 mpls traffic-eng tunnels
+
+3. enabling RSVP in the interface
+
+R1
+int eth 0/0
+ip rsvp bandwidth 512
+int eth 0/1
+ip rsvp bandwidth 512
+int eth 0/2
+ip rsvp bandwidth 192
+
+R2
+int eth 0/0
+ip rsvp bandwidth 512
+int eth 0/1
+ip rsvp bandwidth 512
+int eth 0/2
+ip rsvp bandwidth 192
+
+R3
+int eth 0/0
+ip rsvp bandwidth 512
+int eth 0/1
+ip rsvp bandwidth 512
+int eth 0/2
+ip rsvp bandwidth 192
+
+R4
+int eth 0/0
+ip rsvp bandwidth 512
+int eth 0/1
+ip rsvp bandwidth 512
+int eth 0/2
+ip rsvp bandwidth 192
+
+---------------------
+
+requirement : R1 - 4.4.4.4
+BW requirement 150
+path = R3-R4
+
+ip explicit-path name R1-R4 enable
+next-address 3.3.3.3
+next-address 4.4.4.4
+interface tunnel14
+ip unnumbered loopback 0
+tunnel destination 4.4.4.4
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng  path-option 1 ex;oicit name R1-R4
+tunnel mpls traffic-eng bancwidth 150
+
+
+
+
