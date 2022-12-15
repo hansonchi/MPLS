@@ -61,3 +61,16 @@ interface eth 0/1
 mpls traffic-eng tunnels
 interface eth 0/2
 mpls traffic-eng tunnels
+
+R3
+mpls traffic-eng tunnels
+router ospf 1
+mpls traffic-eng router-id loop 0
+mpls traffic-eng area 0
+
+interface eth 0/0
+mpls traffic-eng tunnels
+interface eth 0/1
+mpls traffic-eng tunnels
+interface eth 0/2
+mpls traffic-eng tunnels
