@@ -186,3 +186,23 @@ tunnel mpls traffic-eng autoroute announce
 show ip rsvp int
 show mpls traffic-eng tunnels
 
+---------------------------------
+requirement : R2 - 4.4.4.4
+BW requirement 300
+path = R2-R4
+
+R2-R4
+ip explicit-path name R2-R4 enable
+next-address 3.3.3.3
+next-address 4.4.4.4
+interface tunnel24
+ip unnumbered loopback 0
+tunnel destination 4.4.4.4
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng  path-option 1 explicit name R2-R4
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+
+show ip rsvp int
+show mpls traffic-eng tunnels
