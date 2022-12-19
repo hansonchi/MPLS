@@ -128,7 +128,7 @@ requirement : R1 - 4.4.4.4
 BW requirement 150
 path = R3-R4
 
-R1
+R1-R4
 ip explicit-path name R1-R4 enable
 next-address 3.3.3.3
 next-address 4.4.4.4
@@ -142,5 +142,20 @@ tunnel mpls traffic-eng priority 4 4
 tunnel mpls traffic-eng autoroute announce 
 
 show ip rsvp int
+show mpls traffic-eng tunnels
 
+R1-R3
+ip explicit-path name R1-R3 enable
+next-address 4.4.4.4
+next-address 3.3.3.3
+interface tunnel13
+ip unnumbered loopback 0
+tunnel destination 3.3.3.3
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng  path-option 1 explicit name R1-R3
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
 
+show ip rsvp int
+show mpls traffic-eng tunnels
