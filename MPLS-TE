@@ -144,6 +144,11 @@ tunnel mpls traffic-eng autoroute announce
 show ip rsvp int
 show mpls traffic-eng tunnels
 
+---------------------------------
+requirement : R1 - 3.3.3.3
+BW requirement 300
+path = R4-R3
+
 R1-R3
 ip explicit-path name R1-R3 enable
 next-address 4.4.4.4
@@ -159,3 +164,25 @@ tunnel mpls traffic-eng autoroute announce
 
 show ip rsvp int
 show mpls traffic-eng tunnels
+
+---------------------------------
+requirement : R1 - 2.2.2.2
+BW requirement 300
+path = any available path
+
+R1-R2
+ip explicit-path name R1-R2 enable
+next-address 2.2.2.2
+
+interface tunnel12
+ip unnumbered loopback 0
+tunnel destination 2.2.2.2
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng  path-option 1 explicit name R1-R2
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+
+show ip rsvp int
+show mpls traffic-eng tunnels
+
