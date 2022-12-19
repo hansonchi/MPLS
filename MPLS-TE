@@ -228,3 +228,25 @@ tunnel mpls traffic-eng autoroute announce
 
 show ip rsvp int
 show mpls traffic-eng tunnels
+
+---------------------
+
+requirement : R3 - 1.1.1.1
+BW requirement 300
+path = R2-R1
+
+R2-R1
+ip explicit-path name R2-R1 enable
+next-address 2.2.2.2
+next-address 1.1.1.1
+interface tunnel31
+ip unnumbered loopback 0
+tunnel destination 1.1.1.1
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng  path-option 1 explicit name R3-R1
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+
+show ip rsvp int
+show mpls traffic-eng tunnels
