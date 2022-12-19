@@ -137,6 +137,8 @@ tunnel destination 4.4.4.4
 tunnel mode mpls trffic-eng
 tunnel mpls traffic-eng  path-option 1 explicit name R1-R4
 tunnel mpls traffic-eng bancwidth 150
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
 
 
 
