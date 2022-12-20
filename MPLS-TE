@@ -122,6 +122,10 @@ ip rsvp bandwidth 512
 int eth 0/2
 ip rsvp bandwidth 192
 
+======================
+static MPLS TL Tunnels
+======================
+
 ---------------------
 
 requirement : R1 - 4.4.4.4
@@ -250,3 +254,12 @@ tunnel mpls traffic-eng autoroute announce
 
 show ip rsvp int
 show mpls traffic-eng tunnels
+
+========================
+Dynamic MPLS TL Tunnels
+========================
+
+
+
+
+
