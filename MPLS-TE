@@ -259,7 +259,39 @@ show mpls traffic-eng tunnels
 Dynamic MPLS TL Tunnels
 ========================
 
+---------------------
+requirement : R1 - 4.4.4.4
+BW requirement 150
 
+R1
+interface tunnel14
+ip unnumbered loopback 0
+tunnel destination 4.4.4.4
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng bancwidth 150
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+tunnel mpls traffic-eng path-option 1 dynamic
 
+show ip route ospf
+show ip rsvp int
+show mpls traffic-eng tunnels
 
+---------------------
+requirement : R1 - 3.3.3.3
+BW requirement 300
+
+R1
+interface tunnel13
+ip unnumbered loopback 0
+tunnel destination 3.3.3.3
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+tunnel mpls traffic-eng path-option 1 dynamic
+
+show ip route ospf
+show ip rsvp int
+show mpls traffic-eng tunnels
 
