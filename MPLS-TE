@@ -312,3 +312,22 @@ tunnel mpls traffic-eng path-option 1 dynamic
 show ip route ospf
 show ip rsvp int
 show mpls traffic-eng tunnels
+
+---------------------
+requirement : R2 - 1.1.1.1
+BW requirement 300
+
+R1
+interface tunnel21
+ip unnumbered loopback 0
+tunnel destination 1.1.1.1
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+tunnel mpls traffic-eng path-option 1 dynamic
+
+show ip route ospf
+show ip rsvp int
+show mpls traffic-eng tunnels
+
