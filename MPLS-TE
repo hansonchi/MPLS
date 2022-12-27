@@ -317,7 +317,7 @@ show mpls traffic-eng tunnels
 requirement : R2 - 1.1.1.1
 BW requirement 300
 
-R1
+R2
 interface tunnel21
 ip unnumbered loopback 0
 tunnel destination 1.1.1.1
@@ -330,4 +330,99 @@ tunnel mpls traffic-eng path-option 1 dynamic
 show ip route ospf
 show ip rsvp int
 show mpls traffic-eng tunnels
+
+---------------------
+requirement : R2 - 4.4.4.4
+BW requirement 300
+
+R2
+interface tunnel24
+ip unnumbered loopback 0
+tunnel destination 4.4.4.4
+tunnel mode mpls trffic-eng
+tunnel mpls traffic-eng bancwidth 300
+tunnel mpls traffic-eng priority 4 4
+tunnel mpls traffic-eng autoroute announce 
+tunnel mpls traffic-eng path-option 1 dynamic
+
+show ip route ospf
+show ip rsvp int
+show mpls traffic-eng tunnels
+
+in this case, will cause bandwidth limited, tunnel interface will be down, can modify priority to 3 3, then tunnel interface will up
+do trace 4.4.4.4 sou 2.2.2.2
+
+=========================================
+configuring IS-IS as the IGP for MPLS TE
+=========================================
+
+R1
+router isis
+net 49.0000.1111.1111.1111.00
+is-type level-1
+metric-style wide
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng level-1
+
+int loo 0
+ip router isis
+int eth 0/0
+ip router isis
+int eth 0/1
+ip router isis
+int eth 0/2
+ip router isis
+
+R2
+router isis
+net 49.0000.2222.2222.2222.00
+is-type level-1
+metric-style wide
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng level-1
+
+int loo 0
+ip router isis
+int eth 0/0
+ip router isis
+int eth 0/1
+ip router isis
+int eth 0/2
+ip router isis
+
+R3
+router isis
+net 49.0000.3333.3333.3333.00
+is-type level-1
+metric-style wide
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng level-1
+
+int loo 0
+ip router isis
+int eth 0/0
+ip router isis
+int eth 0/1
+ip router isis
+int eth 0/2
+ip router isis
+
+R4
+router isis
+net 49.0000.4444.4444.4444.00
+is-type level-1
+metric-style wide
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng level-1
+
+int loo 0
+ip router isis
+int eth 0/0
+ip router isis
+int eth 0/1
+ip router isis
+int eth 0/2
+ip router isis
+
+
 
