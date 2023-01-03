@@ -432,6 +432,57 @@ ip router isis
 MPLS TE FRR
 =======================
 
+1.config the IGP - ospf
+2.config Mpls unicast routing
+3.config MPLS traffce engineering and RSVP
 
+R1
+mpls traffic-eng tunnel
+router ospf 1
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng area 0
+interface eth 0/0
+mpls traffic-eng tunnel
+ip rsvp bandwidth 512
 
+R2
+mpls traffic-eng tunnel
+router ospf 1
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng area 0
+interface eth 0/0
+mpls traffic-eng tunnel
+ip rsvp bandwidth 192
+interface eth 0/1
+mpls traffic-eng tunnel
+ip rsvp bandwidth 192
 
+R3
+mpls traffic-eng tunnel
+router ospf 1
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng area 0
+interface eth 0/0
+mpls traffic-eng tunnel
+ip rsvp bandwidth 512
+interface eth 0/1
+mpls traffic-eng tunnel
+ip rsvp bandwidth 512
+interface eth 0/2
+mpls traffic-eng tunnel
+ip rsvp bandwidth 192
+
+R4
+mpls traffic-eng tunnel
+router ospf 1
+mpls traffic-eng router-id loopback 0
+mpls traffic-eng area 0
+interface eth 0/0
+mpls traffic-eng tunnel
+ip rsvp bandwidth 512
+interface eth 0/1
+mpls traffic-eng tunnel
+ip rsvp bandwidth 512
+interface eth 0/2
+mpls traffic-eng tunnel
+ip rsvp bandwidth 192
