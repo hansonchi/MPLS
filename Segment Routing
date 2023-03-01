@@ -1,8 +1,11 @@
 Segment routing
 
+1.config SR basic
+---------------------------
 Xr1-XR8
 Segment-routing mpls
-Global-block 16000-23999
+Global-block 16000 23999
+commit
 
 Xr1
 Router ospf 1
