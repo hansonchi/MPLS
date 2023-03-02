@@ -2,22 +2,59 @@ Segment routing
 
 1.config SR basic
 ---------------------------
-Xr1-XR8
-Segment-routing mpls
+Xr1-XR4
+Segment-routing
 Global-block 16000 23999
 commit
+
+XR5-XR8
+Segment-routing
+Global-block 16000 23999
+commit
+
+2.config IGP for segment routing
+---------------------------
 
 Xr1
 Router ospf 1
 Segment-routing mpls
+exit
+area 0
 Interface loo 0
 Prefix-sid index 1
+exit
+commit
 
 Xr2
 Router ospf 1
 Segment-routing mpls
+exit
+area 0
 Interface loo 0
 Prefix-sid index 2
+exit
+commit
+
+Xr3
+Router ospf 1
+Segment-routing mpls
+exit
+area 0
+Interface loo 0
+Prefix-sid index 3
+exit
+commit
+
+Xr4
+Router ospf 1
+Segment-routing mpls
+exit
+area 0
+Interface loo 0
+Prefix-sid index 4
+exit
+commit
+
 
 XR5
 Router isis 1
@@ -26,13 +63,72 @@ Net 49.0000.5555.5555.5555.00
 Address-family ipv4 unicast
 Metric-style wide
 Segment-routing mpls
+
 Interface loo 0
 Address-family ipv4 unicast
 Prefix-sid index 5
-Int eth 0/0/0/0
+
+Int gig 0/0/0/0
 Address-family ipv4 unicast
-Int eth 0/0/0/1
+Int gig 0/0/0/1
 Address-family ipv4 unicast
+commit
+
+XR6
+Router isis 1
+Is-type level-2-only
+Net 49.0000.6666.6666.6666.00
+Address-family ipv4 unicast
+Metric-style wide
+Segment-routing mpls
+
+Interface loo 0
+Address-family ipv4 unicast
+Prefix-sid index 6
+
+Int gig 0/0/0/0
+Address-family ipv4 unicast
+Int gig 0/0/0/1
+Address-family ipv4 unicast
+commit
+
+XR7
+Router isis 1
+Is-type level-2-only
+Net 49.0000.7777.7777.7777.00
+Address-family ipv4 unicast
+Metric-style wide
+Segment-routing mpls
+
+Interface loo 0
+Address-family ipv4 unicast
+Prefix-sid index 7
+
+Int gig 0/0/0/0
+Address-family ipv4 unicast
+Int gig 0/0/0/1
+Address-family ipv4 unicast
+commit
+
+XR8
+Router isis 1
+Is-type level-2-only
+Net 49.0000.8888.8888.8888.00
+Address-family ipv4 unicast
+Metric-style wide
+Segment-routing mpls
+
+Interface loo 0
+Address-family ipv4 unicast
+Prefix-sid index 8
+
+Int gig 0/0/0/0
+Address-family ipv4 unicast
+Int gig 0/0/0/1
+Address-family ipv4 unicast
+commit
+
+=======================
 
 XR4 as100 XR8 as200
 Bop route leaking
