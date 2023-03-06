@@ -229,3 +229,18 @@ address-family ipv4 unicast
 mttric-style wide
 redistribute bgp 200 route-policy B2I
 
+SR for IGP
+
+segment-routing
+global-block 18000-19999 # config non-default global SRGB from 18000 to 19999
+router isis 1
+address-family ipv4/6 unicast
+metric-style wide
+segment-routing ipv6
+
+router ospf 1
+area 0
+segment-routing mpls # area command
+segment-routing forwarding mpls # interface command
+interface giga 0/0/0/0
+segment-routing forwarding disable # interface command
