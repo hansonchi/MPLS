@@ -241,12 +241,27 @@ address-family ipv4 unicast
 metric-style wide
 segment-routing mpls
 
+show isis database verbose xrvr-1
+
 router isis 1
 segment-routing mpls
 global-block 18000-19999 
 address-family ipv4/6 unicast
 metric-style wide
 segment-routing ipv6
+
+router ospf 1
+router-id 1.1.1.1
+segment-routing mpls
+segment-routing forwarding mpls
+area 0
+interface loop 0
+passive enable
+prefix-sid index 1
+interface giga 0/0/0/0
+network point-to-point
+
+show ospf database opaque-area 4.0.0.0 self-originate
 
 router ospf 1
 area 0
