@@ -241,6 +241,22 @@ address-family ipv4 unicast
 metric-style wide
 segment-routing mpls
 
+int loo 0
+ipv4 address 1.1.1.1 255.255.255.255
+ipv6 address 2001::101:101/128
+router isis 1
+address-family ipv4 unicast
+metric-style wide
+segment-routing mpls
+address-family ipv6 unicast
+metric-style wide
+segment-routing mpls
+interface loo 0
+address-family ipv4 unicast
+prefix-sid absolute 16001 # or prfix-sid index 1
+address-family ipv6 unicast
+prefix-sid absolute 17001 # or prfix-sid index 1001
+
 show isis database verbose xrvr-1
 
 router isis 1
