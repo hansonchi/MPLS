@@ -233,7 +233,10 @@ SR for IGP
 
 segment-routing
 global-block 18000-19999 # config non-default global SRGB from 18000 to 19999
+
 router isis 1
+segment-routing mpls
+global-block 18000-19999 
 address-family ipv4/6 unicast
 metric-style wide
 segment-routing ipv6
